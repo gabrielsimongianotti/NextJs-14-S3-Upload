@@ -1,0 +1,22 @@
+.contaneirButton {
+    display: flex;
+    justify-content: center;
+}
+
+.button {
+    bottom: -5%;
+    margin: 10px;
+    background-color: var(--color-button-disable);
+    padding: 19px 29px;
+    font-size: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.button .arrowIcon {
+    margin: 8px;
+    width: 16px;
+    height: 16px;
+}

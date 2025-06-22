@@ -1,0 +1,31 @@
+.dropdownSelect {
+    width: 98%;
+    height: 50px;
+    background-color: #c1b4f7;
+    color: #000;
+    font-weight: 600;
+    font-size: 24px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin-top: 16px;
+}
+
+.optionTangerine {
+    font-family: 'italic';
+}
+
+.optionTimesNewRoman {
+    font-family: 'sans-serif';
+}
+
+
+.optionVerdana {
+    font-family: 'Verdana';
+}
+
+
+.dropdownSelect:focus {
+    outline: 0;
+    box-shadow: 0 0 0 0 rgba(0, 123, 255, .25);
+}
