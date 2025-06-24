@@ -58,10 +58,7 @@ const UploadForm = () => {
       <form onSubmit={handleSubmit}>
         <InputSelect action={(event) => handleCategoryChange(event)} />
 
-        {/* */}
-        <div className={styles.imagePlaceholder}>
-          <span role="img" aria-label="image">🖼️</span>
-        </div>
+
         <div className={styles.chooseBox}>
 
           <div className={styles.fileInput}>
@@ -83,20 +80,16 @@ const UploadForm = () => {
               className={styles.uploadButton}>
               📁 Selecionar arquivos
             </button>
-            <span
-              className={styles.noFileText}
-            > Files Selects </span>
-            {names &&
-              names.map((name) => (
-                <span
-                  className={styles.noFileText}
-                >  {name} </span>
+            <span className={styles.noFileText}>
+              {names.length === 0 ? "Nenhum arquivo selecionado" : "Arquivos selecionados:"}
+            </span>
+            <ul className={styles.fileNameList}>
+              {names.map((name, index) => (
+                <li key={index}>{name}</li>
               ))}
-
-
+            </ul>
           </div>
         </div>
-        {/* */}
 
         <Button type="submit" disabled={!file || uploading} title="upload" />
       </form >
