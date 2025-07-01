@@ -4,10 +4,9 @@
 }
 
 .button {
-    bottom: -5%;
-    margin: 10px;
-    background-color: var(--color-button-disable);
-    padding: 19px 29px;
+    border: 0;
+    background-color: #c1b4f7;
+    padding: 14px 24px;
     font-size: 20px;
     border-radius: 8px;
     display: flex;
@@ -16,7 +15,7 @@
 }
 
 .button .arrowIcon {
-    margin: 8px;
-    width: 16px;
-    height: 16px;
+
+    width: 30px;
+    height: 30px;
 }

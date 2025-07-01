@@ -1,11 +1,11 @@
 import { ButtonProps } from "./types"
 import style from "./styles.module.css"
-import arrow from "../../assets/Arrow.png"
+import fileUpload from "../../assets/File-upload.png"
 // import arrowLeft from "@/assets/ArrowLeft.png"
 import Image from "next/image";
 import { useRouter } from "next/router";
 
-export function Button({ title, icon, path = "/", backPath, disabled }: ButtonProps) {
+export function Button({ title, icon, path = "/", backPath, disabled, ...rest }: ButtonProps) {
 
   return (
     <div className={style.contaneirButton}>
@@ -14,12 +14,12 @@ export function Button({ title, icon, path = "/", backPath, disabled }: ButtonPr
         className={style.button}
         disabled={disabled}
         rel="noreferrer"
-        onClick={() => {
-          // router.push(path)
-        }}
+        {...rest}
       >
         {title}
-        <Image src={arrow} alt="" className={style.arrowIcon} />
+        <Image src={fileUpload}
+          alt=""
+          className={style.arrowIcon} />
       </button >
 
     </div>

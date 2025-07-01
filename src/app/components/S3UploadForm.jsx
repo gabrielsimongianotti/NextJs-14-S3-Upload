@@ -34,7 +34,8 @@ const UploadForm = () => {
 
     try {
       for (var i = 0; i < file.length; i++) {
-        const formData = new FormData();
+        const formData = new FormData()
+        console.log(`/api/s3-upload?category=${category}`)
         formData.append("file", file[i]);
         const response = await fetch(`/api/s3-upload?category=${category}`, {
           method: "POST",
@@ -54,14 +55,15 @@ const UploadForm = () => {
 
   return (
     <div className={styles.card}>
+
       <Title text="Selecione os backgrounds dos adesivos" />
       <form onSubmit={handleSubmit}>
-        <InputSelect action={(event) => handleCategoryChange(event)} />
 
 
         <div className={styles.chooseBox}>
 
-          <div className={styles.fileInput}>
+          <div className={styles.buttonsInput}>
+
             <input
               type="file"
               accept="image/*"
@@ -70,6 +72,7 @@ const UploadForm = () => {
               ref={fileInputRef}
               style={{ display: 'none' }}
             />
+
             <button
               type="button"
               accept="image/*"
@@ -80,6 +83,11 @@ const UploadForm = () => {
               className={styles.uploadButton}>
               📁 Selecionar arquivos
             </button>
+
+            <InputSelect action={(event) => handleCategoryChange(event)} />
+          </div>
+          <div className={styles.displayInput}>
+
             <span className={styles.noFileText}>
               {names.length === 0 ? "Nenhum arquivo selecionado" : "Arquivos selecionados:"}
             </span>
@@ -91,9 +99,10 @@ const UploadForm = () => {
           </div>
         </div>
 
-        <Button type="submit" disabled={!file || uploading} title="upload" />
       </form >
-    </div >
+      <Button type="submit" disabled={!file || uploading} title="upload" />
+
+    </div>
   );
 };
 

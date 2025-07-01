@@ -1,0 +1,140 @@
+.container {
+    min-height: 100vh;
+    background-color: #F1F1F1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.card {
+    background: #282828;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 1.5rem;
+    padding: 2rem;
+    height: 80vh;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.uploadBox {
+    flex: 1;
+    border: 2px dashed #d1d5db;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.uploadContent {
+    text-align: center;
+}
+
+.icon {
+    font-size: 2.5rem;
+    color: #3b82f6;
+    margin-bottom: 0.5rem;
+}
+
+.or {
+    margin: 0.5rem 0;
+    color: white;
+}
+
+.uploadDescription {
+    color: white;
+}
+
+.browseBtn {
+    background-color: #fb923c;
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.browseBtn:hover {
+    background-color: #f97316;
+}
+
+.rightSide {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 4vh;
+}
+
+.imageContainer {
+    text-align: center;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+}
+
+.progressSection {
+    min-height: 45vh;
+    /* background: red; */
+    display: flex;
+    overflow-y: auto;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.fileItem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.fileLabel {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #f1f6ff;
+}
+
+.complete {
+    color: #10e060;
+}
+
+.failed {
+    color: #ef4444;
+}
+
+.progressBar {
+    background-color: #e5e7eb;
+    border-radius: 9999px;
+    height: 8px;
+    overflow: hidden;
+}
+
+.progressFill {
+    background-color: #fb923c;
+    height: 100%;
+    border-radius: 9999px;
+}
+
+.full {
+    width: 100%;
+}
+
+.partial {
+    width: 65%;
+    background-color: #fb923c;
+    height: 100%;
+    border-radius: 9999px;
+}
+
+.fileSize {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
