@@ -3,7 +3,8 @@ import { useState, useRef } from "react";
 import styles from "./FileUpload.module.css";
 import InputSelect from "./inputSelect";
 import { Button } from "./button"
-
+import fileUpload from "../assets/Arrow-up.png"
+import Image from "next/image"
 const FileUpload = () => {
     const [files, setFiles] = useState([]);
     const [uploading, setUploading] = useState(false);
@@ -26,25 +27,26 @@ const FileUpload = () => {
 
     const handleUpload = async () => {
         setUploading(true);
-        const newProgress = {};
-
-        for (let i = 0; i < files.length; i++) {
+        const uploadTasks = files.map((file) => {
             const formData = new FormData();
-            formData.append("file", files[i]);
+            formData.append("file", file);
 
-            const response = await fetch(`/api/s3-upload?category=${category}`, {
+            return fetch(`/api/s3-upload?category=${category}`, {
                 method: "POST",
                 body: formData,
-            });
+            }).then((response) => ({
+                name: file.name,
+                status: response.ok ? 100 : -1
+            }));
+        });
 
-            if (response.ok) {
-                newProgress[files[i].name] = 100;
-            } else {
-                newProgress[files[i].name] = -1;
-            }
-        }
-
+        const results = await Promise.all(uploadTasks);
+        const newProgress = {};
+        results.forEach((res) => {
+            newProgress[res.name] = res.status;
+        });
         setProgress(newProgress);
+
         setUploading(false);
     };
 
@@ -59,17 +61,13 @@ const FileUpload = () => {
                         setFiles(droppedFiles);
                     }}>
                     <div className={styles.uploadContent}>
-                        <div className={styles.icon}>⬆️</div>
+                        <Image src={fileUpload}
+                            alt=""
+                            className={styles.updateIcon} />
                         <p className={styles.uploadDescription}>Joge os seus arquivos aqui para fazer upload</p>
                         <p className={styles.or}>OR</p>
-                        <Button
-                            onClick={handleClick}
 
-                            title={uploading ? "Carregando as imagens..." : "selecione os arquivos"}
-                        />
-                        <button className={styles.browseBtn} onClick={handleClick}>
-                            Browse
-                        </button>
+
                         <input
                             type="file"
                             multiple
@@ -97,14 +95,16 @@ const FileUpload = () => {
                                     ) : progress[file.name] === -1 ? (
                                         <span className={styles.failed}>❌ Failed</span>
                                     ) : (
-                                        <span className={styles.uploading}></span>
+                                        <span className={styles.uploading}>Pronto para enviar </span>
                                     )}
                                 </div>
+
                                 <div className={styles.progressBar}>
                                     <div
                                         className={styles.progressFill}
                                         style={{ width: `${progress[file.name] || 0}%` }}
-                                    ></div>
+                                    >
+                                    </div>
                                 </div>
                             </div>
                         ))}
